@@ -5,45 +5,33 @@ import java.math.RoundingMode;
 
 public class Product {
 
-    private int id;
+    private final int id;
 
-    private String name;
+    private final String name;
 
-    private BigDecimal price;
+    private final BigDecimal price;
 
     public static final BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.1);
 
-    private Rating rating ;
+    private  Rating rating ;
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+   
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(final BigDecimal price) {
-       if (price != null) {
-        this.price = price; 
-       }
-       else
-        this.price = BigDecimal.ONE;
-
-        
-    }
+ 
 
     public BigDecimal getDiscount()
     {
@@ -54,9 +42,18 @@ public class Product {
         return rating;
     }
 
-    public void setRating(Rating rating) {
-        this.rating = rating;
+  
+
+    public Product applyRating(Rating newRating){
+         this.rating=newRating;
+         return new Product(id,name,price,newRating);
     }
+
+@Override
+public String toString() {
+    // TODO Auto-generated method stub
+    return id + " " +name+ " "+price +" " +rating.getStars();
+}
 
     public Product(int id, String name, BigDecimal price, Rating rating) {
         this.id = id;

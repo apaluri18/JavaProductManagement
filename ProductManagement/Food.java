@@ -3,7 +3,7 @@ package ProductManagement;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Food extends Product {
+ class Food extends Product {
     LocalDate bestBefore;
 
     public LocalDate getBestBefore() {

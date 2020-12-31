@@ -3,7 +3,7 @@ package ProductManagement;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Product {
+  public class  Product {
 
     private final int id;
 
@@ -51,8 +51,20 @@ public class Product {
 
 @Override
 public String toString() {
-    // TODO Auto-generated method stub
+
     return id + " " +name+ " "+price +" " +rating.getStars();
+}
+
+@Override
+public boolean equals(Object obj) {
+
+    return super.equals(obj);
+}
+
+@Override
+public int hashCode() {
+ 
+    return super.hashCode();
 }
 
     public Product(int id, String name, BigDecimal price, Rating rating) {

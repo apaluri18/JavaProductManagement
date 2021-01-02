@@ -20,7 +20,7 @@ public class ProductManager {
     private DateTimeFormatter dateFormat;
     private NumberFormat moneyFormat;
     private StringBuilder append;
-    private static final String FILENAME = "/Users/anirudhpaluri/Documents/Java11/ProductManagement/data/resources";
+    private static final String FILENAME = "/Users/anirudhpaluri/Documents/Java11/ProductManagement/data/resources.properties";
 
 
     public Product CreateProduct(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
@@ -31,8 +31,8 @@ public class ProductManager {
         return new Drink(id, name, price, rating);
     }
 
-    public Product reviewProduct(Product prdouct, Rating rating, Review comments) {
-        this.review = new Review(rating, comments);
+    public Product reviewProduct(Product product, Rating rating, String comments) {
+this.review = new Review(rating, comments);
         return product.applyRating(rating);
 
     }
@@ -67,7 +67,15 @@ public class ProductManager {
 
     public ProductManager(Locale locale) {
         this.locale = locale;
-        resources = ResourceBundle.getBundle("ProductManagement.ProductManager.data.resources", locale);
+      try {
+          
+        resources = ResourceBundle.getBundle("ProductManagement.data.resources", locale);
+      } catch (Exception e) {
+          //TODO: handle exception
+          e.printStackTrace();
+      }
+        
+       // System.out.println( resources.getBaseBundleName().isEmpty());
         dateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).localizedBy(locale);
         moneyFormat = NumberFormat.getCurrencyInstance(locale);
     }

@@ -16,6 +16,9 @@ public class Shop {
         ProductManager pm1 = new ProductManager(Locale.UK);
         
        Product p1 = pm1.CreateProduct(101,"Tea",BigDecimal.valueOf(1.99),Rating.NOT_RATED);
+       System.out.println(p1);
+      // pm1.PrintProductReport();
+    pm1.reviewProduct(p1, Rating.FIVE_STAR, "Test");
        pm1.PrintProductReport();
         /*Product p2 = pm1.CreateProduct(102,"Coffee",BigDecimal.valueOf(2.99),Rating.FOUR_STAR);
         Product p3 = pm1.CreateProduct(103,"Cake",BigDecimal.valueOf(3.99),Rating.FIVE_STAR,LocalDate.now().plusDays(4));

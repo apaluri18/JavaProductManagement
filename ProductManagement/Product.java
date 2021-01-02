@@ -3,7 +3,7 @@ package ProductManagement;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-  public class  Product {
+  public class  Product  implements Rateable<Product>{
 
     private final int id;
 
@@ -38,13 +38,14 @@ import java.math.RoundingMode;
         return price.multiply(DISCOUNT_RATE).setScale(2,RoundingMode.HALF_DOWN);
     }
 
+    @Override
     public Rating getRating() {
         return rating;
     }
 
   
-
-    public Product applyRating(Rating newRating){
+@Override
+   public Product applyRating(Rating newRating){
          this.rating=newRating;
          return new Product(id,name,price,newRating);
     }
@@ -88,5 +89,7 @@ public int hashCode() {
         this.price = BigDecimal.valueOf(0);
         this.rating = Rating.NOT_RATED;
     }
+
+   
 
 }
